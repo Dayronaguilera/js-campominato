@@ -31,26 +31,34 @@ output.innerHTML ="I numeri del pc sono: " + listNumber + "</br>";
 //numero inserito dal utente con prompt!
 var listUserNumb = [];
 var score = 0;
+var flag = false;
 
-while (listUserNumb.length < 5) {
+while (listUserNumb.length < 2) {
 
     //chiedi al utente per 84 volte un numero!
     var userNumb = parseInt(prompt("inserisci un un numero da 1 a 100"));
     
     // controla che il numero nn sia  presente nel array del pc!
     if (!listUserNumb.includes(userNumb)) {
-        
+
+        // controlla che il num nn sia presente nel array del pc
         if (listNumber.includes(userNumb)) {
-            output3.innerHTML = "Spiacente hai perso";
+            flag = true;
             break;
     
-        }else{listUserNumb.push(userNumb)
+        }else {
+            listUserNumb.push(userNumb);
             score += 1
         }
        
     }else {
         alert("inserisci un'altro numero");   
     }
+}
+if (!flag) {
+    output3.innerHTML = "Bravo hai vinto!";
+} else {
+    output3.innerHTML = "Spiacente hai perso ritenta ancora!";
 }
 
 output2.innerHTML = "I numeri del utente sono: " + listUserNumb + "</br>" + "il tuo score è: " + score + "punti";
