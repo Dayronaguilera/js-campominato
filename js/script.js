@@ -13,7 +13,7 @@ function getRandomNumber(min, max) {
 
 // array number inizialmente vuoto!
 var listNumber = [];
-
+console.log(listNumber);
 // inserisci all'interno del array per 16 volte!
 while (listNumber.length < 16) { // deve essere 16
     //genera x 16 volte un numero random!
@@ -26,39 +26,41 @@ while (listNumber.length < 16) { // deve essere 16
         listNumber.push(result);  
     } 
 }
-output.innerHTML ="I numeri del pc sono: " + listNumber + "</br>";
+
 
 //numero inserito dal utente con prompt!
 var listUserNumb = [];
 var score = 0;
 var flag = false;
 
-while (listUserNumb.length < 2) {
+function start() {
+    while (listUserNumb.length < 84) {
 
-    //chiedi al utente per 84 volte un numero!
-    var userNumb = parseInt(prompt("inserisci un un numero da 1 a 100"));
-    
-    // controla che il numero nn sia  presente nel array del pc!
-    if (!listUserNumb.includes(userNumb)) {
+        //chiedi al utente per 84 volte un numero!
+        var userNumb = parseInt(prompt("inserisci un un numero da 1 a 100"));
+        console.log("Questi sono i num del user: ",userNumb);
+        // controla che il numero nn sia  presente nel array del pc!
+        if (!listUserNumb.includes(userNumb)) {
 
-        // controlla che il num nn sia presente nel array del pc
-        if (listNumber.includes(userNumb)) {
-            flag = true;
-            break;
-    
+            // controlla che il num nn sia presente nel array del pc
+            if (listNumber.includes(userNumb)) {
+                flag = true;
+                break;
+        
+            }else {
+                listUserNumb.push(userNumb);
+                score += 1
+            }
+        
         }else {
-            listUserNumb.push(userNumb);
-            score += 1
+            alert("inserisci un'altro numero");   
         }
-       
-    }else {
-        alert("inserisci un'altro numero");   
     }
+    if (!flag) {
+        output3.innerHTML = "Bravo hai VINTO!";
+    } else {
+        output3.innerHTML = "Spiacente hai perso ritenta ancora!";
+    }
+    output.innerHTML = "I numeri del utente sono: " + listUserNumb;
+    output2.innerHTML = "Il tuo punteggio è " + score;
 }
-if (!flag) {
-    output3.innerHTML = "Bravo hai vinto!";
-} else {
-    output3.innerHTML = "Spiacente hai perso ritenta ancora!";
-}
-
-output2.innerHTML = "I numeri del utente sono: " + listUserNumb + "</br>" + "il tuo score è: " + score + "punti";
